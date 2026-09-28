@@ -1,0 +1,14 @@
+# server/Caddyfile
+
+# For local development (HTTP)
+localhost:80 {
+    reverse_proxy api:8000
+}
+
+# ----------------------------------------------------
+# For Production (Uncomment the block below when deploying)
+# Caddy will automatically provision SSL certificates for this domain.
+#
+# api.opentriage.org {
+#     reverse_proxy api:8000
+# }

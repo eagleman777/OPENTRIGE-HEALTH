@@ -1,0 +1,14 @@
+# Node
+node_modules/
+.pnp
+.pnp.js
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# OS Files
+.DS_Store
+Thumbs.db
