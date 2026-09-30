@@ -1,0 +1,46 @@
+name: Android APK Build
+
+# This triggers the build automatically when you push to main, 
+# or allows you to click a "Run workflow" button manually on GitHub.
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: 
+
+jobs:
+  build:
+    name: Build Android Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+
+      - name: Install Dependencies
+        working-directory: ./client
+        run: npm install
+
+      - name: Build Android APK
+        working-directory: ./client/android
+        # Makes the Gradle wrapper executable and builds the release app
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleRelease
+
+      - name: Upload APK to GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: OpenTriage-Android-APK
+          path: client/android/app/build/outputs/apk/release/app-release.apkS
