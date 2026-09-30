@@ -48,4 +48,12 @@ export class OpportunisticSyncManager {
       }
     }
   }
+
+  /**
+   * Specifically triggers resending of failed sync items
+   */
+  async retryFailedSyncs() {
+    console.log("OpportunisticSyncManager: Triggered retry of FAILED_RETRY queue items.");
+    return this.attemptSync();
+  }
 }

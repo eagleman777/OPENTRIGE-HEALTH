@@ -113,6 +113,24 @@ const INITIAL_LOGISTICS_REQUESTS: LogisticsBroadcastRequest[] = [
 
 const INITIAL_SYNC_QUEUE: SyncQueueItem[] = [
   {
+    queue_id: 'q-triage-failed-01',
+    entity_type: 'TRIAGE_ASSESSMENT',
+    entity_id: 't-a101-4455-8899-001',
+    mutation_type: 'CREATE',
+    payload_json: JSON.stringify({
+      assessment_id: 't-a101-4455-8899-001',
+      patient_id: 'p-01a4e8d2-43b9-4f70-b118-2e633d7b801a',
+      triage_urgency: 'EMERGENCY_RED',
+      temperature_celsius: 39.4,
+      condition: 'SEVERE_LOWER_RESPIRATORY_INFECTION (PNEUMONIA)',
+    }),
+    client_timestamp: '2026-09-18T05:20:00Z',
+    retry_count: 2,
+    status: 'FAILED_RETRY',
+    idempotency_key: 'idemp-triage-retry-001',
+    last_error: 'HTTP 504 Gateway Timeout: Uplink dropped during encrypted handshake with base station.',
+  },
+  {
     queue_id: 'q-logistics-initial-01',
     entity_type: 'LOGISTICS_REQUEST',
     entity_id: 'REQ-2026-1042',

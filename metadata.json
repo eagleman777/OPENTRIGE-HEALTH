@@ -1,0 +1,6 @@
+{
+  "name": "OpenTriage Health - Frontline Diagnostics & Surveillance",
+  "description": "Offline-first frontline diagnostic mobile application and geospatial epidemic surveillance platform powered by PostGIS DBSCAN clustering.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
